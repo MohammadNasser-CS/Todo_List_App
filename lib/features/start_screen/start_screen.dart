@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/core/services/app_navigatort.dart';
 import 'package:todo_list/core/widgets/custom_button.dart';
+import 'package:todo_list/features/home/home_page.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -42,7 +44,9 @@ class StartScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: CustomButton(
-                onPressed: () {},
+                onPressed: () {
+                  AppNavigator.navigateInto(context, const HomePage());
+                },
                 title: 'Go To Home',
                 isPrimary: false,
               ),

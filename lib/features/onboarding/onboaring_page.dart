@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:todo_list/core/services/app_navigatort.dart';
 import 'package:todo_list/core/widgets/custom_button.dart';
-import 'package:todo_list/features/auth/start_screen/start_screen.dart';
+import 'package:todo_list/features/start_screen/start_screen.dart';
 import 'package:todo_list/features/onboarding/models/onboarding_model.dart';
 
 class OnBoardingPage extends StatefulWidget {
