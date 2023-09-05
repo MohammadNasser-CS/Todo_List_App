@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:todo_list/core/services/app_navigatort.dart';
 import 'package:todo_list/core/widgets/custom_button.dart';
+import 'package:todo_list/features/auth/start_screen/start_screen.dart';
 import 'package:todo_list/features/onboarding/models/onboarding_model.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -15,6 +17,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final List<OnboardingModel> _onboardingList = onBoardingModelList;
   final PageController _pageController = PageController();
   int _onboardingIndex = 0;
+  bool isLastPage = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               Row(
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (!isLastPage) {
+                        _onboardingIndex = _onboardingList.length - 1;
+                        _pageController.animateToPage(_onboardingIndex,
+                            duration: const Duration(microseconds: 400),
+                            curve: Curves.fastOutSlowIn);
+                      }
+                    },
                     child: const Text(
                       'SKIP',
                       style: TextStyle(
@@ -45,6 +55,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   onPageChanged: (currentIndex) {
                     setState(() {
                       _onboardingIndex = currentIndex;
+                      if (currentIndex == (_onboardingList.length - 1)) {
+                        isLastPage = true;
+                      } else {
+                        isLastPage = false;
+                      }
                     });
                   },
                   controller: _pageController,
@@ -93,7 +108,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               Row(
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_onboardingIndex > 0) {
+                        _onboardingIndex--;
+                        _pageController.animateToPage(_onboardingIndex,
+                            duration: const Duration(microseconds: 400),
+                            curve: Curves.fastOutSlowIn);
+                      }
+                    },
                     child: const Text(
                       'BACK',
                       style: TextStyle(
@@ -104,8 +126,18 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   ),
                   const Spacer(),
                   CustomButton(
-                      onPressed: () {},
-                      title: _onboardingIndex == 2 ? 'Get Started' : 'Next'),
+                      onPressed: () {
+                        if (!isLastPage) {
+                          _onboardingIndex++;
+                          _pageController.animateToPage(_onboardingIndex,
+                              duration: const Duration(microseconds: 400),
+                              curve: Curves.fastOutSlowIn);
+                        } else {
+                          AppNavigator.navigateInto(
+                              context, const StartScreen());
+                        }
+                      },
+                      title: isLastPage ? 'Get Started' : 'Next'),
                 ],
               )
             ],

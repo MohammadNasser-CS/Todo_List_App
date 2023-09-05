@@ -9,5 +9,10 @@ class TodoListTheme {
     primaryColor: AppColorConstants.primaryColor,
     fontFamily: ThemeConstants.latoFontFamily,
     scaffoldBackgroundColor: AppColorConstants.scaffoldBackgroundColor,
+    appBarTheme: AppBarTheme(
+      foregroundColor: Colors.white,
+      backgroundColor: AppColorConstants.scaffoldBackgroundColor,
+      elevation: 0,
+    ),
   );
 }
