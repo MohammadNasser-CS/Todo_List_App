@@ -3,7 +3,9 @@ class SvgPaths {
   static const String onboarding_2 = 'assets/images/onboarding_2.svg';
   static const String onboarding_3 = 'assets/images/onboarding_3.svg';
   static const String sort = 'assets/images/sort.svg';
-
+  static const String university = 'assets/images/university.svg';
   static const String add = 'assets/images/add.svg';
   static const String emptyListPage = 'assets/images/empty_page.svg';
+  static const String homeWork = 'assets/images/homework.svg';
+  static const String workIcon = 'assets/images/work.svg';
 }

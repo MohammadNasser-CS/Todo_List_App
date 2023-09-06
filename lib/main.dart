@@ -16,7 +16,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  SharedPreferenceClass _sharedPreferenceClass = SharedPreferenceClass();
+  final SharedPreferenceClass _sharedPreferenceClass 
+  = SharedPreferenceClass();
   @override
   void initState() {
     _sharedPreferenceClass.initialize();

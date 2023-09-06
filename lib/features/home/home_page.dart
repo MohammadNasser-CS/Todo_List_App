@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_list/core/constants/app_color_constants.dart';
 import 'package:todo_list/core/constants/svg_paths.dart';
+import 'package:todo_list/core/services/app_navigatort.dart';
 import 'package:todo_list/features/calendar_page/calendar_page.dart';
 import 'package:todo_list/features/focus_page/focus_page.dart';
 import 'package:todo_list/features/todo_list/todo_list_page.dart';
+import 'package:todo_list/features/todo_list/widgets/add_sheet.dart';
 import 'package:todo_list/features/user_page/user_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -59,7 +61,9 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          AppNavigator.navigateInto(context, const AddSheet());
+        },
         backgroundColor: AppColorConstants.primaryColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -93,17 +97,17 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month_outlined),
             activeIcon: Icon(Icons.calendar_month),
-            label: 'Home',
+            label: 'Calendar',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.access_time_sharp),
             activeIcon: Icon(Icons.access_time_filled_sharp),
-            label: 'Home',
+            label: 'Focus',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
             activeIcon: Icon(Icons.person),
-            label: 'Home',
+            label: 'Profile',
           ),
         ],
       ),
